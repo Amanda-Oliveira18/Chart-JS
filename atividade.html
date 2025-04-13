@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementando o Chart JS</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<style>
+    body{
+        background-image: url(https://cdn.pixabay.com/photo/2022/09/01/14/18/white-background-7425604_1280.jpg);
+        background-size: cover;
+    }
+    h1{
+        justify-self: center;
+    }
+    .graficos{
+        width: 89%;
+        height: 350px;
+        margin: auto;
+        justify-content: center;
+    }
+    .tipo{
+        width: 1350px;
+        height: 350px;
+        display: flex;
+        justify-content: center;
+    }
+    .linha{
+        width: 80%;
+        background-color: white;
+    }
+    .barras{
+        width: 80%;
+        background-color: white;
+    }
+    
+</style>
+<body>
+    <h1>Gráficos para análise de temperatura e umidade</h1>
+    <div class="graficos">
+        <div class="tipo">
+        <div class="linha"><canvas id="myChart"></canvas></div>
+        <div class="barras"><canvas id="myChart1"></canvas></div>            
+        </div>
+    </div>
+</body>
+<script>
+    // GRAFICO DE TEMPERATURA E UMIDADE DURANTE UM CERTO PERIODO
+    const ctx = document.getElementById('myChart');
+
+    const labels1 = [
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00',
+    ];
+
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: labels1,
+        datasets: [{
+          label: 'Temperatura',
+          backgroundColor: 'red',
+          borderColor: 'red',
+          data: [30, 29, 28, 25, 22, 23]
+        },
+        {
+            label: 'Umidade',
+            backgroundColor: 'blue',
+            borderColor: 'blue',
+            data: [80, 82, 80, 85, 80, 83],
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+</script>
+<script>
+    // GRAFICO DE BARRAS
+    const ctx1 = document.getElementById('myChart1');
+  
+    new Chart(ctx1, {
+      type: 'bar',
+      data: {
+        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+        datasets: [{
+            label: 'Temperatura Média',
+            backgroundColor: 'green',
+            borderColor: 'green',
+            data: [22, 24, 27, 23, 20, 18],
+        },
+        {
+            label: 'Umidade Média',
+            backgroundColor: 'darkblue',
+            borderColor: 'darkblue',
+            data: [90, 89, 93, 87, 88, 82],
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+</script>
+
+</html>
